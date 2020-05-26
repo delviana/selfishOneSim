@@ -1,4 +1,5 @@
 /*
+
  * @(#)CommunityDetectionReport.java
  *
  * Copyright 2010 by University of Pittsburgh, released under GPLv3.
