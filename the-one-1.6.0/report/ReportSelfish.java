@@ -13,6 +13,8 @@ import java.util.Map;
 import routing.DecisionEngineRouter;
 import routing.MessageRouter;
 import routing.RoutingDecisionEngine;
+import routing.bubleRapSelfish.TupleDecisionEngine;
+import routing.bubleRapSelfish.TupleForwardReceive;
 import routing.community.DegreeDetectionEngine;
 
 /**
@@ -28,7 +30,6 @@ public class ReportSelfish extends Report{
     @Override
     public void done(){
         List<DTNHost> nodes = SimScenario.getInstance().getHosts();
-        Map<DTNHost, List<Integer>> aTuple = new HashMap<DTNHost, List<Integer>>();
         
         for (DTNHost h : nodes){
             MessageRouter r = h.getRouter();
@@ -40,8 +41,9 @@ public class ReportSelfish extends Report{
                 continue;
             }
             
-            DegreeDetectionEngine fe = (DegreeDetectionEngine) de;
-//            int [] 
+            TupleDecisionEngine tp = (TupleDecisionEngine) de;
+            Map<DTNHost, List<TupleForwardReceive>> aTuple = tp.getTuple();
+
             
         }
     }

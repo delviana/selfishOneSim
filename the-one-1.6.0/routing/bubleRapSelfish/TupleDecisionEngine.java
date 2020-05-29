@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package routing;
+package routing.bubleRapSelfish;
+
+import core.DTNHost;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author Acer
  */
-public class SprayAndWaitRouterEADecision {
-    
+public interface TupleDecisionEngine {
+    public Map<DTNHost, List<TupleForwardReceive>> getTuple();
 }

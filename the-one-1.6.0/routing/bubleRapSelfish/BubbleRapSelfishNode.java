@@ -25,7 +25,7 @@ import routing.community.SimpleCommunityDetection;
  *
  * @author Jarkom
  */
-public class BubbleRapSelfishNode implements RoutingDecisionEngine, CommunityDetectionEngine {
+public class BubbleRapSelfishNode implements RoutingDecisionEngine, CommunityDetectionEngine, TupleDecisionEngine {
 
     //setting ID untuk setting algoritma deteksi Komunitas : setting id {@value{}
     public static final String COMMUNITY_ALG_SETTING = "communityDetectAlg";
@@ -434,6 +434,11 @@ public class BubbleRapSelfishNode implements RoutingDecisionEngine, CommunityDet
 
         Double ResidualTTL = TTL / tAwal;
         return ResidualTTL;
+    }
+
+    @Override
+    public Map<DTNHost, List<TupleForwardReceive>> getTuple() {
+        return this.exChange;
     }
 
 }
