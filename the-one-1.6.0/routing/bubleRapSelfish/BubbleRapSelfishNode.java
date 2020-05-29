@@ -49,10 +49,6 @@ public class BubbleRapSelfishNode implements RoutingDecisionEngine, CommunityDet
 
     private double currentEnergy;
 
-    //membangun distributedbublerap decision engine berbasis settings 
-    //menggambarkan settings objek parameter. Class mencari Class Nama 
-    //Deteksi komunitas dan algoritma centrality yang seharusnya digunakan untuk 
-    //melakukan routing
     public BubbleRapSelfishNode(Settings s) {
 
         //contains : mengembalikan nilai true jika nama settingan memiliki beberapa nilai tertentu 
