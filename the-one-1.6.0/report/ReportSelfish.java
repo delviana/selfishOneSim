@@ -7,7 +7,6 @@ package report;
 
 import core.DTNHost;
 import core.SimScenario;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import routing.DecisionEngineRouter;
@@ -46,6 +45,7 @@ public class ReportSelfish extends Report{
 
             
         }
+        super.done();
     }
     
 }
