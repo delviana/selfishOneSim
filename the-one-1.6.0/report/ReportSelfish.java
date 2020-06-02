@@ -42,7 +42,6 @@ public class ReportSelfish extends Report{
             
             TupleDecisionEngine tp = (TupleDecisionEngine) de;
             Map<DTNHost, List<TupleForwardReceive>> aTuple = tp.getTuple();
-
             
         }
         super.done();

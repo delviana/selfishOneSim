@@ -69,7 +69,7 @@ public class BufferTiapNodeYangDitemuiReport extends Report {
             }
         }
         //        double values = 0;
-//        for (Double avgEncounter : avgBuffer.values()) {
+        //        for (Double avgEncounter : avgBuffer.values()) {
 //            values += avgEncounter;
 //        }
 //
@@ -92,7 +92,7 @@ public class BufferTiapNodeYangDitemuiReport extends Report {
             write("\n" + value);
         }
         //        write("Average Buffer  = " + avgValues);
-        
+
         super.done();
 
     }
@@ -117,18 +117,16 @@ public class BufferTiapNodeYangDitemuiReport extends Report {
 //            }
 //        }
 //    }
-    
-    
 
     private double avgBufferCalc(List<Double> bufferList) {
         Iterator<Double> i = bufferList.iterator();
         double jumlah = 0;
-        while(i.hasNext()){
+        while (i.hasNext()) {
             Double d = i.next();
             jumlah += d;
         }
-            double avgDuration = jumlah / bufferList.size();
-            return avgDuration;
+        double avgDuration = jumlah / bufferList.size();
+        return avgDuration;
     }
 
 }

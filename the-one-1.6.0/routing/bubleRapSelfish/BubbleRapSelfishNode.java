@@ -149,45 +149,35 @@ public class BubbleRapSelfishNode implements RoutingDecisionEngine, CommunityDet
     }
 
     @Override
-    public boolean newMessage(Message m
-    ) {
+    public boolean newMessage(Message m) {
         return true;            //selalu simpan dan menruskan pesan yang dibuat
     }
 
     @Override
-    public boolean isFinalDest(Message m, DTNHost aHost
-    ) {
+    public boolean isFinalDest(Message m, DTNHost aHost) {
         return m.getTo() == aHost;      //unicast Routing
         //jika host adalah final destination berikan pesan
     }
 
     @Override
-    public boolean shouldSaveReceivedMessage(Message m, DTNHost thisHost
-    ) {
+    public boolean shouldSaveReceivedMessage(Message m, DTNHost thisHost) {
         return m.getTo() != thisHost;
         //jika host bukan dsetination teruskan
     }
 
     @Override
-    public boolean shouldSendMessageToHost(Message m, DTNHost otherHost
-    ) {
+    public boolean shouldSendMessageToHost(Message m, DTNHost otherHost) {
         if (m.getTo() == otherHost) {
-            return true;        //sepele (trivial) untuk disimpan ke destination
+            return true;       
         }
 
-        //disini akan diputuskan kapan akan meneruskan pesan
-        // Di BubleRap bekerja keras pd awal forwarding pesan di Global Central ia akan terus mencari hingga
-        //menemukan node yang memiliki tujuan pesan yang sama dgn destination dalam lokal komunitas yang sama
-        //pada saat masuk di Local Community dia akan menggunakan matriks lokal centrality 
-        //untuk meneruskan pesan ke dalam komunitas
         DTNHost dest = m.getTo();
         BubbleRapSelfishNode de = getOtherDecisionEngine(otherHost);
 
-        //yang memiliki local community terbaik dgn destination, host atau peer
-        boolean peerInCommunity = de.commumesWithHost(dest); // apakh peer di dlm community nya dest
-        boolean meInCommunity = this.commumesWithHost(dest); // apakh THIS ada di community nya dest
+        boolean peerInCommunity = de.commumesWithHost(dest); 
+        boolean meInCommunity = this.commumesWithHost(dest); 
 
-        if (peerInCommunity && !meInCommunity) // peer is in dest's community, but THIS is not
+        if (peerInCommunity && !meInCommunity) 
         {
             return true;
         } else if (!peerInCommunity && meInCommunity) // THIS is in dest'community, but peer is not
@@ -214,8 +204,7 @@ public class BubbleRapSelfishNode implements RoutingDecisionEngine, CommunityDet
     @Override
     //di BubleRap memungkinkan suatu node utk remove pesan setelah itu diteruskan ke dalam 
     //local comunity dari destination
-    public boolean shouldDeleteSentMessage(Message m, DTNHost otherHost
-    ) {
+    public boolean shouldDeleteSentMessage(Message m, DTNHost otherHost) {
         // delete the message once it is forwarded to the node in the dest'community
         BubbleRapSelfishNode de = this.getOtherDecisionEngine(otherHost);
         return de.commumesWithHost(m.getTo())
@@ -223,12 +212,10 @@ public class BubbleRapSelfishNode implements RoutingDecisionEngine, CommunityDet
     }
 
     @Override
-    public boolean shouldDeleteOldMessage(Message m, DTNHost hostReportingOld
-    ) {
+    public boolean shouldDeleteOldMessage(Message m, DTNHost hostReportingOld) {
 //        BubbleRapSelfishNode de = this.getOtherDecisionEngine(hostReportingOld);
 //        return de.commumesWithHost(m.getTo())
 //                && !this.commumesWithHost(m.getTo());
-
         return true;
     }
 
